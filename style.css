@@ -1,0 +1,18 @@
+#game_panel {
+  width: 50%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 20px;
+  padding: 20px;
+}
+
+.card {
+  width: 200px;
+  height: 200px;
+  border: 2px solid black;
+  border-radius: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10rem;
+}

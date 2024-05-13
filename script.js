@@ -21,7 +21,9 @@ const high_score = document.getElementById('high-score')
 const moves = document.getElementById('moves')
 const reset = document.getElementById('reset-game')
 
-
+document.addEventListener('DOMContentLoaded', function() {
+  assignValueToCards();
+});
 
 // assign a value to all cards
 function assignValueToCards() {
@@ -29,7 +31,6 @@ function assignValueToCards() {
   values = ['a','a','b','b','c','c','d','d','e','e','f','f','g','g','h','h']
 
   values.sort((a,b) => Math.random()-0.5)
-  console.log(values)
   
   // assign these values to a card at random
   for (index in values) {
@@ -38,6 +39,19 @@ function assignValueToCards() {
 }
 
 // display a card value when clicked
+cards.forEach(card => {
+  
+    card.addEventListener('click', () => {
+      card.innerHTML = card.dataset.value;
+      card.style.backgroundColor = 'lightblue';
+
+      setTimeout(() => {
+        card.innerHTML = '';
+        card.style.backgroundColor = '';
+    }, 500);
+    });
+});
+
 // check if two cards match
 // hide cards when two clicked
 // keep track of number of moves
