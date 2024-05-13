@@ -20,6 +20,8 @@ const cards = [
 const high_score = document.getElementById('high-score')
 const moves = document.getElementById('moves')
 const reset = document.getElementById('reset-game')
+let cards_selected = []
+let moves_taken = 0
 
 document.addEventListener('DOMContentLoaded', function() {
   assignValueToCards();
@@ -40,11 +42,24 @@ function assignValueToCards() {
 
 // display a card value when clicked
 cards.forEach(card => {
-  
+    // listen for the click
     card.addEventListener('click', () => {
       card.innerHTML = card.dataset.value;
       card.style.backgroundColor = 'lightblue';
 
+      // add one to moves
+      moves_taken += 1;
+      console.log('moves: ' + moves_taken);
+      
+      // check if there are 2 cards in the array and call the comparison if so
+      if (cards_selected.length < 2) {
+        cards_selected.push(card.dataset.value);
+        if (cards_selected.length > 1) {
+         checkCardsSelected() 
+        }
+      }
+
+      // reset the card innerhtml after half a second
       setTimeout(() => {
         card.innerHTML = '';
         card.style.backgroundColor = '';
@@ -53,6 +68,20 @@ cards.forEach(card => {
 });
 
 // check if two cards match
+function checkCardsSelected() {
+  console.log(cards_selected)
+
+  // compare the two elements of the array
+  if (cards_selected[0] === cards_selected[1]) {
+    console.log('The selected cards are equal');
+  } else {
+    console.log('The selected cards are not equal');
+  }
+
+  // clear the array once the two selected cards have been checked
+  cards_selected = [];
+}
+
 // hide cards when two clicked
 // keep track of number of moves
 // write the high score to a file
