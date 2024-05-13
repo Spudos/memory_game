@@ -16,3 +16,11 @@
   align-items: center;
   font-size: 10rem;
 }
+
+.visible {
+  background-color: bisque;
+}
+
+.matched {
+  background-color: aquamarine;
+}

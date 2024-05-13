@@ -45,44 +45,48 @@ cards.forEach(card => {
     // listen for the click
     card.addEventListener('click', () => {
       card.innerHTML = card.dataset.value;
-      card.style.backgroundColor = 'lightblue';
+      card.classList.add('visible');
 
       // add one to moves
       moves_taken += 1;
       console.log('moves: ' + moves_taken);
       
-      // check if there are 2 cards in the array and call the comparison if so
-      if (cards_selected.length < 2) {
-        cards_selected.push(card.dataset.value);
-        if (cards_selected.length > 1) {
-         checkCardsSelected() 
-        }
-      }
-
-      // reset the card innerhtml after half a second
       setTimeout(() => {
-        card.innerHTML = '';
-        card.style.backgroundColor = '';
-    }, 500);
+        updateBoard()
+      }, 500);
+      
+      // check if there are 2 cards in the array and call the comparison if so
+    
+      cards_selected.push(card.dataset.value);
+      if (cards_selected.length === 2) {
+        let match = cards_selected[0] === cards_selected[1] 
+
+        // reset the card innerhtml after half a second
+        if (match) {
+          console.log('The selected cards are equal');
+          cards.forEach(card => {
+            if (card.dataset.value === cards_selected[0]) { //use card_id to solve double click bug
+              card.classList.add('matched')
+            }
+          });
+        }
+
+        cards_selected = [];
+      }
     });
 });
 
-// check if two cards match
-function checkCardsSelected() {
-  console.log(cards_selected)
-
-  // compare the two elements of the array
-  if (cards_selected[0] === cards_selected[1]) {
-    console.log('The selected cards are equal');
-  } else {
-    console.log('The selected cards are not equal');
-  }
-
-  // clear the array once the two selected cards have been checked
-  cards_selected = [];
+function updateBoard() {
+  cards.forEach(card => {
+    if (card.classList.contains('visible')) {
+      card.classList.remove('visible')
+      card.innerHTML = ''
+    }
+  });
 }
 
-// hide cards when two clicked
+
+
 // keep track of number of moves
 // write the high score to a file
 // reset the current game
