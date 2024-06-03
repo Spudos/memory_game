@@ -45,40 +45,45 @@ cards.forEach(card => {
     // listen for the click
     card.addEventListener('click', () => {
       card.innerHTML = card.dataset.value;
-      card.classList.add('visible');
+        if (!card.classList.contains('matched')) {
+          card.classList.add('visible');
 
-      // add one to moves
-      moves_taken += 1;
-      console.log('moves: ' + moves_taken);
-      
-      setTimeout(() => {
-        updateBoard()
-      }, 500);
-      
-      // check if there are 2 cards in the array and call the comparison if so
-    
-      cards_selected.push(card.dataset.value);
-      if (cards_selected.length === 2) {
-        let match = cards_selected[0] === cards_selected[1] 
+          // add one to moves
+          moves_taken += 1;
+          console.log('moves: ' + moves_taken);
+          
+          setTimeout(() => {
+            updateBoard()
+          }, 500);
+        
+          // check if there are 2 cards in the array and call the comparison if so
+        
+          cards_selected.push({card_value: card.dataset.value, card_id: card.getAttribute('id')});
+          console.log(cards_selected)
+          if (cards_selected.length === 2) {
+            let match = cards_selected[0].card_value === cards_selected[1].card_value
+            let id_match = cards_selected[0].card_id === cards_selected[1].card_id 
 
-        // reset the card innerhtml after half a second
-        if (match) {
-          console.log('The selected cards are equal');
-          cards.forEach(card => {
-            if (card.dataset.value === cards_selected[0]) { //use card_id to solve double click bug
-              card.classList.add('matched')
-            }
-          });
+          // reset the card innerhtml after half a second
+          if (match && !id_match) {
+            console.log('The selected cards are different but have a matching value');
+            cards.forEach(card => {
+              if (card.dataset.value === cards_selected[0].card_value) { 
+                card.classList.add('matched')
+                card.innerHTML = card.dataset.value
+              }
+            });
+          }
+
+          cards_selected = [];
         }
-
-        cards_selected = [];
-      }
+      };
     });
 });
 
 function updateBoard() {
   cards.forEach(card => {
-    if (card.classList.contains('visible')) {
+    if (card.classList.contains('visible') && !card.classList.contains('matched')) {
       card.classList.remove('visible')
       card.innerHTML = ''
     }
