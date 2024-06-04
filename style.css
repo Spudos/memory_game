@@ -1,20 +1,121 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
 #game_panel {
-  width: 50%;
+  height: 100vh;
+  display: flex;
+}
+
+#game {
+  max-height: 100vh;
+  aspect-ratio: 1/1;
+  max-width: 100vw;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 20px;
-  padding: 20px;
+  grid-gap: 2vh;
+  padding: 1vh;
+}
+
+@media (max-width: 830px) {
+  #game_panel {
+    flex-direction: column;
+  }
+}
+
+#information {
+  flex: 1;
+  background-color: aquamarine;
+  padding: 1vh;
 }
 
 .card {
-  width: 200px;
-  height: 200px;
   border: 2px solid black;
   border-radius: 10%;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 10rem;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 70% 70%;
+}
+
+.visible.icon-a {
+  background-image: url(/icons/cable-car-solid.svg);
+}
+
+.visible.icon-b {
+  background-image: url(/icons/car-burst-solid.svg);
+}
+
+.visible.icon-c {
+  background-image: url(/icons/car-on-solid.svg);
+}
+
+.visible.icon-d {
+  background-image: url(/icons/car-rear-solid.svg);
+}
+
+.visible.icon-e {
+  background-image: url(/icons/car-side-solid.svg);
+}
+
+.visible.icon-f {
+  background-image: url(/icons/car-solid.svg);
+}
+
+.visible.icon-g {
+  background-image: url(/icons/car-tunnel-solid.svg);
+}
+
+.visible.icon-h {
+  background-image: url(/icons/taxi-solid.svg);
 }
 
 .visible {

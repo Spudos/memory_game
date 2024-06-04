@@ -37,6 +37,7 @@ function assignValueToCards() {
   // assign these values to a card at random
   for (index in values) {
     cards[index].setAttribute('data-value', values[index])
+    cards[index].classList.add('icon-' + values[index])
   }
 }
 
@@ -44,7 +45,6 @@ function assignValueToCards() {
 cards.forEach(card => {
     // listen for the click
     card.addEventListener('click', () => {
-      card.innerHTML = card.dataset.value;
         if (!card.classList.contains('matched')) {
           card.classList.add('visible');
 
@@ -70,7 +70,6 @@ cards.forEach(card => {
             cards.forEach(card => {
               if (card.dataset.value === cards_selected[0].card_value) { 
                 card.classList.add('matched')
-                card.innerHTML = card.dataset.value
               }
             });
           }
@@ -85,7 +84,6 @@ function updateBoard() {
   cards.forEach(card => {
     if (card.classList.contains('visible') && !card.classList.contains('matched')) {
       card.classList.remove('visible')
-      card.innerHTML = ''
     }
   });
 }
