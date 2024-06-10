@@ -45,39 +45,45 @@ function assignValueToCards() {
 cards.forEach(card => {
     // listen for the click
     card.addEventListener('click', () => {
-        if (!card.classList.contains('matched')) {
-          card.classList.add('visible');
+      if (!card.classList.contains('matched')) {
+        card.classList.add('visible');
 
-          // add one to moves
-          moves_taken += 1;
-          console.log('moves: ' + moves_taken);
-          
-          setTimeout(() => {
-            updateBoard()
-          }, 500);
-        
-          // check if there are 2 cards in the array and call the comparison if so
-        
-          cards_selected.push({card_value: card.dataset.value, card_id: card.getAttribute('id')});
-          console.log(cards_selected)
-          if (cards_selected.length === 2) {
-            let match = cards_selected[0].card_value === cards_selected[1].card_value
-            let id_match = cards_selected[0].card_id === cards_selected[1].card_id 
+        // add one to moves
+        moves_taken += 1;
+        console.log('moves: ' + moves_taken);
+        moves.innerHTML=moves_taken
 
-          // reset the card innerhtml after half a second
-          if (match && !id_match) {
-            console.log('The selected cards are different but have a matching value');
-            cards.forEach(card => {
-              if (card.dataset.value === cards_selected[0].card_value) { 
-                card.classList.add('matched')
-              }
-            });
-          }
+        setTimeout(() => {
+          updateBoard()
+        }, 500);
+      
+        // check if there are 2 cards in the array and call the comparison if so
+      
+        cards_selected.push({card_value: card.dataset.value, card_id: card.getAttribute('id')});
+        console.log(cards_selected)
+        if (cards_selected.length === 2) {
+          let match = cards_selected[0].card_value === cards_selected[1].card_value
+          let id_match = cards_selected[0].card_id === cards_selected[1].card_id 
 
-          cards_selected = [];
+        // reset the card innerhtml after half a second
+        if (match && !id_match) {
+          console.log('The selected cards are different but have a matching value');
+          cards.forEach(card => {
+            if (card.dataset.value === cards_selected[0].card_value) { 
+              card.classList.add('matched')
+              card.classList.add('visible');
+            }
+          });
         }
-      };
-    });
+
+        cards_selected = [];
+      }
+    };
+    console.log(isGameComplete())
+    if (isGameComplete()) {
+      updateHighScore()
+    }
+  });
 });
 
 function updateBoard() {
@@ -88,11 +94,19 @@ function updateBoard() {
   });
 }
 
+function isGameComplete() {
+  let not_all_matched = cards.some(card => {
+    console.log('matched test:' + card.classList.contains('matched'))
+    return !card.classList.contains('matched');
+  })
+  if (not_all_matched === false) {
+    return true
+  } else {
+    return false
+  }
+};
 
-
-// keep track of number of moves
-// write the high score to a file
-// reset the current game
-
-
-
+function updateHighScore() {
+    // update cookie with high score value if necessary
+  console.log('Final moves count: ' + moves_taken);
+}
