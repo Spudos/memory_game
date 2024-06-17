@@ -70,7 +70,7 @@ table {
 
 #information {
   flex: 1;
-  background-color: aquamarine;
+  background-color: lightgray;
   padding: 1vh;
 }
 
@@ -86,35 +86,35 @@ table {
   background-size: 70% 70%;
 }
 
-.visible.icon-a {
+.visible[data-value=a] {
   background-image: url(/icons/cable-car-solid.svg);
 }
 
-.visible.icon-b {
+.visible[data-value=b] {
   background-image: url(/icons/car-burst-solid.svg);
 }
 
-.visible.icon-c {
+.visible[data-value=c] {
   background-image: url(/icons/car-on-solid.svg);
 }
 
-.visible.icon-d {
+.visible[data-value=d] {
   background-image: url(/icons/car-rear-solid.svg);
 }
 
-.visible.icon-e {
+.visible[data-value=e] {
   background-image: url(/icons/car-side-solid.svg);
 }
 
-.visible.icon-f {
+.visible[data-value=f] {
   background-image: url(/icons/car-solid.svg);
 }
 
-.visible.icon-g {
+.visible[data-value=g] {
   background-image: url(/icons/car-tunnel-solid.svg);
 }
 
-.visible.icon-h {
+.visible[data-value=h] {
   background-image: url(/icons/taxi-solid.svg);
 }
 

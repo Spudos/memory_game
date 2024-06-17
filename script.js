@@ -20,12 +20,12 @@ const cards = [
 const resetButton = document.getElementById("reset-game");
 const high_score = document.getElementById('high-score')
 const moves = document.getElementById('moves')
-const reset = document.getElementById('reset-game')
 let cards_selected = []
 let moves_taken = 0
 
 document.addEventListener('DOMContentLoaded', function() {
   assignValueToCards();
+  showHighScore();
 });
 
 // assign a value to all cards
@@ -38,7 +38,6 @@ function assignValueToCards() {
   // assign these values to a card at random
   for (index in values) {
     cards[index].setAttribute('data-value', values[index])
-    cards[index].classList.add('icon-' + values[index])
   }
 }
 
@@ -107,8 +106,10 @@ function isGameComplete() {
 };
 
 function updateHighScore() {
-    // update cookie with high score value if necessary
-  console.log('Final moves count: ' + moves_taken);
+  if (moves_taken < getCookie() || getCookie() == 0 ) {
+    document.cookie='high_score=' + moves_taken + '; expires=Mon, 23 Jun 2025 12:00:00 UTC';
+    showHighScore();
+  }
 }
 
 resetButton.addEventListener("click", resetGame);
@@ -120,4 +121,21 @@ function resetGame() {
   });
   moves_taken = 0
   moves.innerHTML=moves_taken
+  cards_selected = []
+  assignValueToCards()
+}
+
+function showHighScore() {
+  let saved_high_score = getCookie()
+
+  console.log(saved_high_score)
+  high_score.innerHTML=saved_high_score
+}
+
+function getCookie() {
+  if (document.cookie.indexOf('high_score') >= 0) {
+    return document.cookie.split('=').pop()
+  } else {
+    return 0
+  }
 }
