@@ -17,6 +17,7 @@ const cards = [
   document.getElementById('card-16')
 ]
 
+const resetButton = document.getElementById("reset-game");
 const high_score = document.getElementById('high-score')
 const moves = document.getElementById('moves')
 const reset = document.getElementById('reset-game')
@@ -58,7 +59,6 @@ cards.forEach(card => {
         }, 500);
       
         // check if there are 2 cards in the array and call the comparison if so
-      
         cards_selected.push({card_value: card.dataset.value, card_id: card.getAttribute('id')});
         console.log(cards_selected)
         if (cards_selected.length === 2) {
@@ -109,4 +109,15 @@ function isGameComplete() {
 function updateHighScore() {
     // update cookie with high score value if necessary
   console.log('Final moves count: ' + moves_taken);
+}
+
+resetButton.addEventListener("click", resetGame);
+
+function resetGame() {
+  cards.forEach(card => {
+      card.classList.remove('visible')
+      card.classList.remove('matched')
+  });
+  moves_taken = 0
+  moves.innerHTML=moves_taken
 }
