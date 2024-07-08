@@ -20,6 +20,7 @@ const cards = [
 const resetButton = document.getElementById("reset-game");
 const high_score = document.getElementById('high-score')
 const moves = document.getElementById('moves')
+const trophy = document.getElementById('trophy')
 let cards_selected = []
 let moves_taken = 0
 
@@ -80,6 +81,7 @@ cards.forEach(card => {
     };
     console.log(isGameComplete())
     if (isGameComplete()) {
+      displayResults(moves_taken)
       updateHighScore()
     }
   });
@@ -104,6 +106,17 @@ function isGameComplete() {
     return false
   }
 };
+
+function displayResults(moves_taken) {
+  trophy.classList.add('visible')
+  if (moves_taken <= 30) {
+    trophy.setAttribute('data-value', 'gold')
+  } else if (moves_taken <= 40) {
+    trophy.setAttribute('data-value', 'silver')
+  } else {
+    trophy.setAttribute('data-value', 'bronze')
+  }
+}
 
 function updateHighScore() {
   if (moves_taken < getCookie() || getCookie() == 0 ) {
