@@ -86,35 +86,67 @@ table {
   background-size: 70% 70%;
 }
 
-.visible[data-value=a] {
+.hard.visible[data-value=a] {
   background-image: url(/icons/cable-car-solid.svg);
 }
 
-.visible[data-value=b] {
+.hard .visible[data-value=b] {
   background-image: url(/icons/car-burst-solid.svg);
 }
 
-.visible[data-value=c] {
+.hard .visible[data-value=c] {
   background-image: url(/icons/car-on-solid.svg);
 }
 
-.visible[data-value=d] {
+.hard .visible[data-value=d] {
   background-image: url(/icons/car-rear-solid.svg);
 }
 
-.visible[data-value=e] {
+.hard .visible[data-value=e] {
   background-image: url(/icons/car-side-solid.svg);
 }
 
-.visible[data-value=f] {
+.hard .visible[data-value=f] {
   background-image: url(/icons/car-solid.svg);
 }
 
-.visible[data-value=g] {
+.hard .visible[data-value=g] {
   background-image: url(/icons/car-tunnel-solid.svg);
 }
 
-.visible[data-value=h] {
+.hard .visible[data-value=h] {
+  background-image: url(/icons/taxi-solid.svg);
+}
+
+.easy.visible[data-value=a] {
+  background-image: url(/icons/cable-car-solid.svg);
+}
+
+.easy.visible[data-value=b] {
+  background-image: url(/icons/car-burst-solid.svg);
+}
+
+.easy.visible[data-value=c] {
+  background-image: url(/icons/car-on-solid.svg);
+}
+
+.easy.visible[data-value=d] {
+  background-image: url(/icons/car-rear-solid.svg);
+}
+
+.easy.visible[data-value=e] {
+  background-image: url(/icons/car-side-solid.svg);
+}
+
+.easy.visible[data-value=f] {
+  background-image: url(/icons/car-solid.svg);
+}
+
+.easy.visible[data-value=g] {
+  background-image: url(/icons/car-tunnel-solid.svg);
+}
+
+.easy.visible[data-value=h] {
   background-image: url(/icons/taxi-solid.svg);
 }
 

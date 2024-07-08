@@ -23,6 +23,7 @@ const moves = document.getElementById('moves')
 const trophy = document.getElementById('trophy')
 let cards_selected = []
 let moves_taken = 0
+let difficulty = 'easy'
 
 document.addEventListener('DOMContentLoaded', function() {
   assignValueToCards();
@@ -35,10 +36,16 @@ function assignValueToCards() {
   values = ['a','a','b','b','c','c','d','d','e','e','f','f','g','g','h','h']
 
   values.sort((a,b) => Math.random()-0.5)
-  
+
   // assign these values to a card at random
   for (index in values) {
     cards[index].setAttribute('data-value', values[index])
+console.log(difficulty)
+    if (difficulty == 'easy') {
+      cards[index].classList.add('easy')
+    } else {
+      cards[index].classList.add('hard')
+    }
   }
 }
 
