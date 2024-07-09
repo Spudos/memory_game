@@ -17,6 +17,7 @@ const cards = [
   document.getElementById('card-16')
 ]
 
+const difficultyButton = document.getElementById("set-difficulty");
 const resetButton = document.getElementById("reset-game");
 const high_score = document.getElementById('high-score')
 const moves = document.getElementById('moves')
@@ -30,6 +31,20 @@ document.addEventListener('DOMContentLoaded', function() {
   showHighScore();
 });
 
+difficultyButton.addEventListener("click", setDifficulty);
+
+// toggle difficulty and adjust difficulty button text
+function setDifficulty() {
+  if (difficulty == 'easy') {
+    difficulty = 'hard'
+    difficultyButton.innerHTML='Hard'
+  } else {
+    difficulty = 'easy'
+    difficultyButton.innerHTML='Easy'
+  }
+  resetGame()
+}
+
 // assign a value to all cards
 function assignValueToCards() {
   // create an array of values to assign to cards
@@ -40,10 +55,11 @@ function assignValueToCards() {
   // assign these values to a card at random
   for (index in values) {
     cards[index].setAttribute('data-value', values[index])
-console.log(difficulty)
     if (difficulty == 'easy') {
+      cards[index].classList.remove('hard')
       cards[index].classList.add('easy')
     } else {
+      cards[index].classList.remove('easy')
       cards[index].classList.add('hard')
     }
   }

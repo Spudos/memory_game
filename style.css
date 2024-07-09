@@ -90,64 +90,64 @@ table {
   background-image: url(/icons/cable-car-solid.svg);
 }
 
-.hard .visible[data-value=b] {
+.hard.visible[data-value=b] {
   background-image: url(/icons/car-burst-solid.svg);
 }
 
-.hard .visible[data-value=c] {
+.hard.visible[data-value=c] {
   background-image: url(/icons/car-on-solid.svg);
 }
 
-.hard .visible[data-value=d] {
+.hard.visible[data-value=d] {
   background-image: url(/icons/car-rear-solid.svg);
 }
 
-.hard .visible[data-value=e] {
+.hard.visible[data-value=e] {
   background-image: url(/icons/car-side-solid.svg);
 }
 
-.hard .visible[data-value=f] {
+.hard.visible[data-value=f] {
   background-image: url(/icons/car-solid.svg);
 }
 
-.hard .visible[data-value=g] {
+.hard.visible[data-value=g] {
   background-image: url(/icons/car-tunnel-solid.svg);
 }
 
-.hard .visible[data-value=h] {
+.hard.visible[data-value=h] {
   background-image: url(/icons/taxi-solid.svg);
 }
 
 .easy.visible[data-value=a] {
-  background-image: url(/icons/cable-car-solid.svg);
+  background-image: url(/icons/bacon-solid.svg);
 }
 
 .easy.visible[data-value=b] {
-  background-image: url(/icons/car-burst-solid.svg);
+  background-image: url(/icons/bowl-food-solid.svg);
 }
 
 .easy.visible[data-value=c] {
-  background-image: url(/icons/car-on-solid.svg);
+  background-image: url(/icons/burger-solid.svg);
 }
 
 .easy.visible[data-value=d] {
-  background-image: url(/icons/car-rear-solid.svg);
+  background-image: url(/icons/carrot-solid.svg);
 }
 
 .easy.visible[data-value=e] {
-  background-image: url(/icons/car-side-solid.svg);
+  background-image: url(/icons/leaf-solid.svg);
 }
 
 .easy.visible[data-value=f] {
-  background-image: url(/icons/car-solid.svg);
+  background-image: url(/icons/lemon-solid.svg);
 }
 
 .easy.visible[data-value=g] {
-  background-image: url(/icons/car-tunnel-solid.svg);
+  background-image: url(/icons/seedling-solid.svg);
 }
 
 .easy.visible[data-value=h] {
-  background-image: url(/icons/taxi-solid.svg);
+  background-image: url(/icons/pepper-hot-solid.svg);
 }
 
 #trophy {
@@ -188,6 +188,18 @@ table {
   display: inline-block;
   padding: 10px 20px;
   background-color: #000;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#set-difficulty {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: blue;
   color: white;
   text-align: center;
   text-decoration: none;
