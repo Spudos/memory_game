@@ -55,11 +55,10 @@ function assignValueToCards() {
   // assign these values to a card at random
   for (index in values) {
     cards[index].setAttribute('data-value', values[index])
+    cards[index].classList.remove('hard', 'easy')
     if (difficulty == 'easy') {
-      cards[index].classList.remove('hard')
       cards[index].classList.add('easy')
     } else {
-      cards[index].classList.remove('easy')
       cards[index].classList.add('hard')
     }
   }
